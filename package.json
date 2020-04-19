@@ -1,0 +1,14 @@
+{
+  "name": "astra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kabek \u001b[D\u001b[D\u001b[D\u001b[Dz\u001b[1;5C\u001b[Dbek\u001b[CBrtsiev",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
