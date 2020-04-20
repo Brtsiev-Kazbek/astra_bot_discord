@@ -31,7 +31,7 @@ async function ban(msg) {
  */
 async function kick(msg) {
     const separetedContent = msg.content.split(' ');
-    const reason = separetedContent[2];
+    const reason = separetedContent[2] || 'Таков путь...';
 
     if (!msg.member.hasPermission(['KICK_MEMBERS', 'ADMINISTRATOR'])) {
         msg.reply('У вас недостаточно прав!');
