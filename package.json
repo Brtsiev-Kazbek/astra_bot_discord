@@ -4,15 +4,24 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "node --inspect=9222 main.js"
+    "dev": "nodemon  main.js"
   },
   "author": "Kazbek Brtsiev",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.2.0"
+    "axios": "^0.19.2",
+    "discord.js": "^12.2.0",
+    "nodemon": "^2.0.3"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "Store/*",
+      "./Store/*",
+      "Store/usersData.json"
+    ]
   }
 }
