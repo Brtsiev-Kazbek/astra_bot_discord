@@ -18,7 +18,7 @@ async function ban(msg) {
             });
         } catch (error) {
             console.log(error.message);
-            msg.reply('Ошибка.');
+            msg.reply('ошибка.');
             return;
         }
         msg.reply(`${member.displayName}был забанен. Причина: ${reason}`);
@@ -41,7 +41,7 @@ async function kick(msg) {
             member = await member.kick(reason);
         } catch (error) {
             console.log(error.message);
-            msg.reply('Ошибка.');
+            msg.reply('ошибка.');
             return;
         }
         msg.reply(`${member.displayName} кикнут. Причина: ${reason}`);
