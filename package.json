@@ -4,11 +4,15 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --inspect=9222 main.js"
   },
-  "author": "Kabek \u001b[D\u001b[D\u001b[D\u001b[Dz\u001b[1;5C\u001b[Dbek\u001b[CBrtsiev",
+  "author": "Kazbek Brtsiev",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0"
   }
 }

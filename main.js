@@ -1,78 +1,46 @@
-const discord = require('discord.js')
+const discord = require('discord.js');
 const bot = new discord.Client();
 const config = require('./config.json');
 const fs = require('fs');
-const path = './Store/usersData.json'
+const path = './Store/usersData.json';
 const userData = JSON.parse(fs.readFileSync(path));
+const countMessages = require('./src/Counter.js').countMessages;
+const bank = require('./src/Bank.js');
 
-let botName;
-
-
-bot.on('ready', () => {
-    console.log(`${bot.user.username} has been started!`)
-    botName = bot.user.username;
+bot.on('ready', async () => {
+    console.log(`${bot.user.username} has been started!`);
     bot.user.setPresence({
         status: 'online',
         activity: {
             name: 'SELF DEVELOPING',
-            type: 'PLAYING'
-        }
-    })
-    bot.generateInvite().then((res) => {
-        console.log(res)
-    })
-})
+            type: 'PLAYING',
+        },
+    });
+    const inviteLink = await bot.generateInvite();
+    console.log(inviteLink);
+});
 
 bot.on('message', (msg) => {
-        if(msg.author.username !== botName) {
-            countMessages(msg)
-            if(msg.content.startsWith('Astra, ')) {
-                messageHandler(msg)
-            }
-        }
-})
+    console.log(msg.content);
+    if (msg.content.startsWith('!')) {
+        countMessages(msg.author.username, userData, path);
+        messageHandler(msg);
+    }
+});
 
-bot.login(config.token)
+bot.login(config.token);
 
+
+/**
+ *
+ * @param {Message} msg
+ *
+ */
 function messageHandler(msg) {
-    msg.content = msg.content.replace('Astra, ', '');
-    console.log(msg.content)
-    // msg.reply(`чего надо ${msg.author.username}?`);
-    // msg.channel.send(`${msg.content}`);
-    commands(msg);
-}
-
-function commands(msg) {
-    let author = msg.author.username;
-    let content = msg.content;
-    if(content.includes('статистика')) {
-        msg.reply(`у Вас ${userData[author].coins} очков!`)
-    } 
-    else if( content.includes('банк')) {
-        msg.channel.send({embed: {
-            title: 'Банк',
-            color: 0xf1c40f,
-            fields: [{
-                name: 'Владелец счета',
-                value: author,
-                inline: true
-            },
-            {
-                name: 'Баланс',
-                value: userData[author].coins,
-                inline: true
-            }
-        ],
-            
-        }});
+    const content = msg.content;
+    if (content.includes('статистика')) {
+        bank.showStat(msg, userData);
+    } else if ( content.includes('банк')) {
+        bank.showBank(msg, userData);
     }
-}
-
-function countMessages(msg) {
-    let author = msg.author.username;
-    if(!userData[author]) {
-        userData[author] = { coins : 0} 
-    }
-    userData[author].coins++;
-    fs.writeFileSync(path, JSON.stringify(userData));
 }
