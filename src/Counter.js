@@ -10,7 +10,7 @@ function countMessages(author) {
         userData[author] = {coins: 0};
     }
     userData[author].coins++;
-    FsManager.save(userData);
+    FsManager.saveUserData(userData);
 }
 
 module.exports.countMessages = countMessages;

@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "nodemon --inspect=9223 main.js",
+    "dev": "nodemon --inspect=9222 main.js",
     "start": "node main.js"
   },
   "author": "Kazbek Brtsiev",

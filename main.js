@@ -43,6 +43,8 @@ function handlers(msg) {
         '!статистика': bank.showStat,
         '!бан': moderation.ban,
         '!кик': moderation.kick,
+        '!роль': moderation.setRole,
+        '!снять': moderation.removeRole,
         '!covid': covid.getInfoAboutCOVID,
     };
     action[command](msg);
