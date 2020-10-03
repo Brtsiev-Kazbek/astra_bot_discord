@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "nodemon  main.js"
+    "dev": "nodemon --inspect=9223  main.js"
   },
   "author": "Kazbek Brtsiev",
   "license": "ISC",

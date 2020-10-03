@@ -5,7 +5,6 @@ const countMessages = require('./src/Counter.js').countMessages;
 const bank = require('./src/Bank.js');
 const moderation = require('./src/Moderation.js');
 const covid = require('./src/Covid.js');
-
 bot.on('ready', async () => {
     console.log(`${bot.user.username} has been started!`);
     bot.user.setPresence({

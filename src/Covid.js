@@ -19,6 +19,7 @@ class Covid {
      */
     async getResource({url, method}) {
         const response = await axios({method, url});
+        console.log(response.data);
         return response;
     }
     /**
